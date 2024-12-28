@@ -336,17 +336,21 @@ function handleGameWin() {
         location.reload();
     }, 500);
 }
-
-// Game over condition
+//game over condition
 function handleGameOver() {
     if (isGameEnding) return;
     isGameEnding = true;
-    
-    alert('Game Over! Better luck next time.');
+
+    const playerElement = document.querySelector('#player');
+    playerElement.classList.add('dead'); // Add dead animation
+
     setTimeout(() => {
+        alert('Game Over! Better luck next time.');
         location.reload();
-    }, 500);
+        playerElement.classList.remove('dead'); // Remove dead animation
+    }, 1500);
 }
+
 
 // update leaderboard with the new score if it is a high score
 function updateLeaderboardDisplay(leaderboard) {
